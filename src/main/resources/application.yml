@@ -1,0 +1,29 @@
+server:
+  port: ${http.server.port:8080}
+spring:
+  application:
+    name: admin-page
+  sql:
+    init:
+      platform: mysql
+  datasource:
+    username: ${jdbc.database.username:ba875fdb4753f7}
+    password: ${jdbc.database.password:94dd9e8a}
+    hibernate:
+      dialect: org.hibernate.dialect.MySQL8Dialect
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url:  ${jdbc.database.url:jdbc:mysql://us-cdbr-east-06.cleardb.net/heroku_5a41b38ae47842b}
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        ddl-auto: none
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+
+
+
+
