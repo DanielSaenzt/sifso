@@ -12,6 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RestController
 @RequestMapping("/api/role")
@@ -19,6 +21,12 @@ public class RoleController {
 
     @Autowired
     private RoleService roleService;
+
+    @GetMapping("/listar")
+    public ResponseEntity<?> listar(){
+        List<Role> roles = roleService.findAll();
+        return new ResponseEntity<>(roles,HttpStatus.OK);
+    }
 
     @PostMapping("/")
     public ResponseEntity<?> save(@RequestBody Role rol) throws Exception {
