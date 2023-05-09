@@ -14,5 +14,5 @@ public interface IMedicalRecordRepository extends JpaRepository<MedicalRecord,Lo
     @Modifying
     @Transactional
     @Query("update MedicalRecord m set m.status=?1 where m.id=?2")
-    void updateStatus(Boolean status, Long id);
+    void updateStatus(String status, Long id);
 }

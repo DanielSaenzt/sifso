@@ -1,10 +1,12 @@
 package com.fundacionoasis.service;
 
+import com.fundacionoasis.entity.BloodType;
 import com.fundacionoasis.entity.GroupBeneficiary;
 import com.fundacionoasis.repository.IGroupBeneficiaryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -12,6 +14,9 @@ public class GroupBeneficiaryService {
 
     @Autowired
     private IGroupBeneficiaryRepository groupBeneficiaryRepository;
+    public List<GroupBeneficiary> findAll(){
+        return groupBeneficiaryRepository.findAll();
+    }
 
     public GroupBeneficiary save(GroupBeneficiary groupBeneficiary){
         return groupBeneficiaryRepository.save(groupBeneficiary);

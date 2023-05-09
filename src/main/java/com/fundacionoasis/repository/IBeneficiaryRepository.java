@@ -16,7 +16,7 @@ public interface IBeneficiaryRepository extends JpaRepository<Beneficiary,Long> 
     @Modifying
     @Transactional
     @Query("update Beneficiary b set b.status=?1 where b.id=?2")
-    void updateStatus(Boolean status, Long id);
+    void updateStatus(String status, Long id);
 
     @Query("select b from Beneficiary b where b.dni= ?1")
     Optional<Beneficiary> findByDni(String email);

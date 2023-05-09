@@ -14,5 +14,5 @@ public interface IWorkshopRepository extends JpaRepository<Workshop, Long> {
     @Modifying
     @Transactional
     @Query("update Workshop w set w.status=?1 where w.id=?2")
-    void updateStatus(Boolean status, Long id);
+    void updateStatus(String status, Long id);
 }

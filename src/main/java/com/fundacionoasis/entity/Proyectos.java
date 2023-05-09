@@ -1,26 +1,29 @@
 package com.fundacionoasis.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-@Table(name = "type_workshop")
+@Table(name = "proyectos")
 @AllArgsConstructor
 @NoArgsConstructor
-public class TypeWorkshop {
+@Getter
+@Setter
+public class Proyectos {
     @Id
-    @Getter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
-    @Getter
-    @Setter
-    private String description;
+    @Column(name = "imagen")
+    private String imagen;
 
+    @Column(name = "titulo")
+    private String titulo;
 
+    @Column(name = "descripcion")
+    private String descripcion;
 }

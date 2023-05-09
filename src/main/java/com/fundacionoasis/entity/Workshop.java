@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import javax.persistence.*;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -20,7 +22,27 @@ public class Workshop {
 
     @Getter
     @Setter
+    @Column(name = "title")
+    private String title;
+    @Getter
+    @Setter
+    @Column(name = "date")
+    private Timestamp start;
+
+    @Getter
+    @Setter
+    @Column(name = "enddate")
+    private Timestamp end;
+
+    @Getter
+    @Setter
+    @Column(name = "description")
     private String description;
+
+    @Getter
+    @Setter
+    @Column(name = "color")
+    private String color;
 
     @Getter
     @Setter
@@ -30,17 +52,13 @@ public class Workshop {
     @Getter
     @Setter
     @ManyToOne(cascade = {CascadeType.REMOVE}, fetch = FetchType.LAZY)
-    @JoinColumn(name = "type_workshop_id", referencedColumnName = "id")
+    @JoinColumn(name = "type_workshop_id", referencedColumnName = "Id")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private TypeWorkshop typeWorkshop;
 
-    @Getter
-    @Setter
-    @OneToMany(mappedBy = "workshop",cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.LAZY)
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "workshop"})
-    private List<Planning> plannings;
+
 
     @Getter
     @Setter
-    private Boolean status;
+    private String status;
 }

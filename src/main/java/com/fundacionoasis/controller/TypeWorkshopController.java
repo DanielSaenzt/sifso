@@ -1,6 +1,7 @@
 package com.fundacionoasis.controller;
 
 import com.fundacionoasis.entity.TypeWorkshop;
+import com.fundacionoasis.entity.Workshop;
 import com.fundacionoasis.exception.ConflictException;
 import com.fundacionoasis.exception.ErrorException;
 import com.fundacionoasis.service.TypeWorkshopService;
@@ -12,13 +13,23 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RestController
 @RequestMapping("/api/type")
+@CrossOrigin("*")
+
 public class TypeWorkshopController {
 
     @Autowired
     private TypeWorkshopService typeWorkshopService;
+
+    @GetMapping("/listar")
+    public ResponseEntity<?> listar(){
+        List<TypeWorkshop> typeWorkshops = typeWorkshopService.findAll();
+        return new ResponseEntity<>(typeWorkshops, HttpStatus.OK);
+    }
 
     @PostMapping("/")
     public ResponseEntity<?> save(@RequestBody TypeWorkshop typeWorkshop) throws Exception {

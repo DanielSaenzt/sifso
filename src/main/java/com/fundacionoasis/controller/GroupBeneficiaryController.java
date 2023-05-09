@@ -1,5 +1,6 @@
 package com.fundacionoasis.controller;
 
+import com.fundacionoasis.entity.BloodType;
 import com.fundacionoasis.entity.GroupBeneficiary;
 import com.fundacionoasis.entity.Role;
 import com.fundacionoasis.exception.ConflictException;
@@ -16,12 +17,21 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RestController
 @RequestMapping("/api/group")
+@CrossOrigin("*")
+
 public class GroupBeneficiaryController {
     @Autowired
     private GroupBeneficiaryService groupBeneficiaryService;
+    @GetMapping("/listar")
+    public ResponseEntity<?> listar(){
+        List<GroupBeneficiary> groupBeneficiaries = groupBeneficiaryService.findAll();
+        return new ResponseEntity<>(groupBeneficiaries, HttpStatus.OK);
+    }
 
     @PostMapping("/")
     public ResponseEntity<?> save(@RequestBody GroupBeneficiary groupBeneficiary) throws Exception {

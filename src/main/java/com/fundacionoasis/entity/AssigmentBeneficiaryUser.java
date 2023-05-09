@@ -41,5 +41,5 @@ public class AssigmentBeneficiaryUser {
 
     @Getter
     @Setter
-    private Boolean status;
+    private String status;
 }

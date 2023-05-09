@@ -65,7 +65,7 @@ public class AssigmentController {
     }
 
     @PatchMapping("/status")
-    public ResponseEntity<?> patch(@RequestParam("id") Long id, @RequestParam("status") Boolean status) throws Exception {
+    public ResponseEntity<?> patch(@RequestParam("id") Long id, @RequestParam("status") String status) throws Exception {
 
         if(assigmentService.findById(id).isEmpty()){
             throw new BadRequestCustom("The assigment to update does not exist");

@@ -23,7 +23,7 @@ public class AssigmentService {
         return assigmentRepository.findById(id);
     }
 
-    public void updateStatus(Boolean status, Long id){
+    public void updateStatus(String status, Long id){
         assigmentRepository.updateStatus(status,id);
     }
 

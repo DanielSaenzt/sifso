@@ -11,7 +11,7 @@ public class Validation {
 
     public static void validationEmail(String email) throws BadRequestCustom {
         if(!email.contains("@") || email.contains(" ") || !(email.contains(".es") || email.contains(".co") || email.contains(".com") )){
-            throw new BadRequestCustom("the email is not valid");
+            throw new BadRequestCustom("El correo electrónico no es valido.");
         }
     }
 

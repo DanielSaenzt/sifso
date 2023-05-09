@@ -7,13 +7,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
-@Table(name = "medical_record")
+@Table(name = "attendance_report")
 @AllArgsConstructor
 @NoArgsConstructor
-public class MedicalRecord {
+
+public class AttendanceReport {
+
     @Id
     @Getter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,8 +23,10 @@ public class MedicalRecord {
 
     @Getter
     @Setter
-    @Column(name = "description_data_pass")
-    private String description_data_pass;
+    @ManyToOne(cascade = {CascadeType.REMOVE}, fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @JoinColumn(name = "workshop_id", referencedColumnName = "id")
+    private Workshop workshop;
 
     @Getter
     @Setter
@@ -30,13 +34,16 @@ public class MedicalRecord {
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JoinColumn(name = "beneficiary_id", referencedColumnName = "id")
     private Beneficiary beneficiary;
-
+    @Getter
+    @Setter
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = true)
+    private Date created_at;
     @Getter
     @Setter
     private String status;
 
-    @Getter
-    @Setter
-    @Column(name = "date", columnDefinition = "DATE")
-    private LocalDate date;
+    @PrePersist
+    private void OnCreate(){created_at = new Date();}
+
 }

@@ -6,18 +6,17 @@ import com.fundacionoasis.exception.BadRequestCustom;
 public class UserValidator {
 
     public static void validationAttribute(User user) throws BadRequestCustom {
-        Validation.validationAttributePresent(user.getName(),"The name is required");
-        Validation.validationString(user.getName(),"The name is required");
+        Validation.validationAttributePresent(user.getName(), "El nombre es requerido.");
+        Validation.validationString(user.getName(), "El nombre es requerido.");
 
-        Validation.validationAttributePresent(user.getPassword(),"The password is required");
-        Validation.validationString(user.getPassword(),"The password is required");
+        Validation.validationAttributePresent(user.getPassword(), "La contraseña es requerida.");
+        Validation.validationString(user.getPassword(), "La contraseña es requerida.");
 
-        Validation.validationAttributePresent(user.getEmail(),"The email is required");
-        Validation.validationString(user.getEmail(),"The email is required");
+        Validation.validationAttributePresent(user.getEmail(), "El correo electrónico es requerido.");
+        Validation.validationString(user.getEmail(), "El correo electrónico es requerido.");
 
-        Validation.validationAttributePresent(user.getStatus(),"The status is required");
-        Validation.validationAttributePresent(user.getStatus(),"The status is required");
-        Validation.validationString(user.getStatus(),"The status is required");
+        Validation.validationAttributePresent(user.getStatus(), "El estado es requerido.");
+        Validation.validationString(user.getStatus(), "El estado es requerido.");
     }
 
     public static User trimAttributes(User user){
